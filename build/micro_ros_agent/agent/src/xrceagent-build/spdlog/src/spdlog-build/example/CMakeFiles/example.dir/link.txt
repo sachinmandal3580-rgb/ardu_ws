@@ -1,0 +1,1 @@
+/usr/lib/ccache/c++ -O3 -DNDEBUG CMakeFiles/example.dir/example.cpp.o -o example  ../libspdlog.a 

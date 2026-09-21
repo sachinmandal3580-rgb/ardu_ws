@@ -1,0 +1,88 @@
+{
+	"configurations" : 
+	[
+		{
+			"directories" : 
+			[
+				{
+					"build" : ".",
+					"hasInstallRule" : true,
+					"jsonFile" : "directory-.-2eeeb40a44421b71917c.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.10.2"
+					},
+					"projectIndex" : 0,
+					"source" : ".",
+					"targetIndexes" : 
+					[
+						0,
+						1,
+						2,
+						3
+					]
+				}
+			],
+			"name" : "",
+			"projects" : 
+			[
+				{
+					"directoryIndexes" : 
+					[
+						0
+					],
+					"name" : "ardupilot_gz_gazebo",
+					"targetIndexes" : 
+					[
+						0,
+						1,
+						2,
+						3
+					]
+				}
+			],
+			"targets" : 
+			[
+				{
+					"directoryIndex" : 0,
+					"id" : "BasicSystem::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-BasicSystem-796c59cc6e9f620d61fa.json",
+					"name" : "BasicSystem",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "FullSystem::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-FullSystem-f0b31af92c55d76b2467.json",
+					"name" : "FullSystem",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "ardupilot_gz_gazebo_uninstall::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-ardupilot_gz_gazebo_uninstall-e2ca00b6549dae11a68a.json",
+					"name" : "ardupilot_gz_gazebo_uninstall",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "uninstall::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-uninstall-5dff1268afa0e74c075d.json",
+					"name" : "uninstall",
+					"projectIndex" : 0
+				}
+			]
+		}
+	],
+	"kind" : "codemodel",
+	"paths" : 
+	{
+		"build" : "/home/sachin/ardu_ws/build/ardupilot_gz_gazebo",
+		"source" : "/home/sachin/ardu_ws/src/ardupilot_gz/ardupilot_gz_gazebo"
+	},
+	"version" : 
+	{
+		"major" : 2,
+		"minor" : 6
+	}
+}

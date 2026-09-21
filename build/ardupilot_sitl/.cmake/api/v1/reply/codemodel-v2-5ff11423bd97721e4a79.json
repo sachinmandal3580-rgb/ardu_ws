@@ -1,0 +1,106 @@
+{
+	"configurations" : 
+	[
+		{
+			"directories" : 
+			[
+				{
+					"build" : ".",
+					"hasInstallRule" : true,
+					"jsonFile" : "directory-.-b1700ba0ebdca996ac48.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.20"
+					},
+					"projectIndex" : 0,
+					"source" : ".",
+					"targetIndexes" : 
+					[
+						0,
+						1,
+						2,
+						3,
+						4,
+						5
+					]
+				}
+			],
+			"name" : "",
+			"projects" : 
+			[
+				{
+					"directoryIndexes" : 
+					[
+						0
+					],
+					"name" : "ardupilot_sitl",
+					"targetIndexes" : 
+					[
+						0,
+						1,
+						2,
+						3,
+						4,
+						5
+					]
+				}
+			],
+			"targets" : 
+			[
+				{
+					"directoryIndex" : 0,
+					"id" : "ament_cmake_python_build_ardupilot_sitl_egg::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-ament_cmake_python_build_ardupilot_sitl_egg-d794bed61a58aa3fbe9d.json",
+					"name" : "ament_cmake_python_build_ardupilot_sitl_egg",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "ament_cmake_python_copy_ardupilot_sitl::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-ament_cmake_python_copy_ardupilot_sitl-36d794fe1d56c6142191.json",
+					"name" : "ament_cmake_python_copy_ardupilot_sitl",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "ardupilot_build::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-ardupilot_build-2ab139786167fe8a770c.json",
+					"name" : "ardupilot_build",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "ardupilot_configure::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-ardupilot_configure-ca3f6b5f659cb329d558.json",
+					"name" : "ardupilot_configure",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "ardupilot_sitl_uninstall::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-ardupilot_sitl_uninstall-11e801037531d8decbd0.json",
+					"name" : "ardupilot_sitl_uninstall",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "uninstall::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-uninstall-09f72cd7cf1221b87bd8.json",
+					"name" : "uninstall",
+					"projectIndex" : 0
+				}
+			]
+		}
+	],
+	"kind" : "codemodel",
+	"paths" : 
+	{
+		"build" : "/home/sachin/ardu_ws/build/ardupilot_sitl",
+		"source" : "/home/sachin/ardu_ws/src/ardupilot/Tools/ros2/ardupilot_sitl"
+	},
+	"version" : 
+	{
+		"major" : 2,
+		"minor" : 6
+	}
+}
