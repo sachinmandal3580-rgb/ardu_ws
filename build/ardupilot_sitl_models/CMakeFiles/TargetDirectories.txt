@@ -1,9 +1,0 @@
-/home/sachin/ardu_ws/build/ardupilot_sitl_models/CMakeFiles/uninstall.dir
-/home/sachin/ardu_ws/build/ardupilot_sitl_models/CMakeFiles/ardupilot_sitl_models_uninstall.dir
-/home/sachin/ardu_ws/build/ardupilot_sitl_models/CMakeFiles/test.dir
-/home/sachin/ardu_ws/build/ardupilot_sitl_models/CMakeFiles/edit_cache.dir
-/home/sachin/ardu_ws/build/ardupilot_sitl_models/CMakeFiles/rebuild_cache.dir
-/home/sachin/ardu_ws/build/ardupilot_sitl_models/CMakeFiles/list_install_components.dir
-/home/sachin/ardu_ws/build/ardupilot_sitl_models/CMakeFiles/install.dir
-/home/sachin/ardu_ws/build/ardupilot_sitl_models/CMakeFiles/install/local.dir
-/home/sachin/ardu_ws/build/ardupilot_sitl_models/CMakeFiles/install/strip.dir

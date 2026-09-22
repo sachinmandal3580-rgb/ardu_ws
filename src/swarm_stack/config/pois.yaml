@@ -1,0 +1,34 @@
+# Example Points-of-Interest for a disaster-response scenario.
+# Edit freely; mission_manager_node loads this file at startup via the
+# 'poi_config_path' ROS parameter.
+#
+# x, y are in the same local ENU frame as each drone's /ap/pose/filtered
+# (i.e. metres relative to each drone's own EKF origin/home — see the
+# note on frames in comms_sim_node.py before trusting absolute distances
+# across drones with different home positions).
+pois:
+  - id: "poi_1"
+    x: 20.0
+    y: 5.0
+    z: 0.0
+    priority: 3
+  - id: "poi_2"
+    x: 35.0
+    y: -10.0
+    z: 0.0
+    priority: 5
+  - id: "poi_3"
+    x: 50.0
+    y: 15.0
+    z: 0.0
+    priority: 1
+  - id: "poi_4"
+    x: 65.0
+    y: 0.0
+    z: 0.0
+    priority: 4
+  - id: "poi_5"
+    x: 80.0
+    y: -20.0
+    z: 0.0
+    priority: 2
