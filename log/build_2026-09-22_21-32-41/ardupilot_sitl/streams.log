@@ -1,0 +1,387 @@
+[0.020s] Invoking command in '/home/sachin/ardu_ws/build/ardupilot_sitl': AMENT_PREFIX_PATH=/home/sachin/ardu_ws/install/micro_ros_agent:/home/sachin/ardu_ws/install/ardupilot_msgs:${AMENT_PREFIX_PATH} CMAKE_PREFIX_PATH=/home/sachin/ardu_ws/install/micro_ros_agent:/home/sachin/ardu_ws/install/ardupilot_msgs:/opt/ros/jazzy/opt/gz_sim_vendor:/opt/ros/jazzy/opt/gz_sensors_vendor:/opt/ros/jazzy/opt/gz_physics_vendor:/opt/ros/jazzy/opt/sdformat_vendor:/opt/ros/jazzy/opt/gz_gui_vendor:/opt/ros/jazzy/opt/gz_transport_vendor:/opt/ros/jazzy/opt/gz_rendering_vendor:/opt/ros/jazzy/opt/gz_plugin_vendor:/opt/ros/jazzy/opt/gz_fuel_tools_vendor:/opt/ros/jazzy/opt/gz_msgs_vendor:/opt/ros/jazzy/opt/gz_common_vendor:/opt/ros/jazzy/opt/gz_math_vendor:/opt/ros/jazzy/opt/gz_utils_vendor:/opt/ros/jazzy/opt/gz_tools_vendor:/opt/ros/jazzy/opt/gz_ogre_next_vendor:/opt/ros/jazzy/opt/gz_dartsim_vendor:/opt/ros/jazzy/opt/gz_cmake_vendor:/opt/ros/jazzy DEBUGINFOD_URLS=https://debuginfod.ubuntu.com LD_LIBRARY_PATH=/home/sachin/ardu_ws/install/micro_ros_agent/lib:/home/sachin/ardu_ws/install/ardupilot_msgs/lib:${LD_LIBRARY_PATH} PS1=(.ros2_venv) \[\e]0;\u@\h: \w\a\]${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]\$ PYTHONPATH=/home/sachin/ardu_ws/install/ardupilot_msgs/lib/python3.12/site-packages:${PYTHONPATH} VIRTUAL_ENV_PROMPT=(.ros2_venv) /usr/bin/cmake --build /home/sachin/ardu_ws/build/ardupilot_sitl -- -j12 -l12
+[0.118s] Built target ament_cmake_python_copy_ardupilot_sitl
+[0.400s] running egg_info
+[0.425s] writing ardupilot_sitl.egg-info/PKG-INFO
+[0.426s] writing dependency_links to ardupilot_sitl.egg-info/dependency_links.txt
+[0.426s] writing top-level names to ardupilot_sitl.egg-info/top_level.txt
+[0.474s] reading manifest file 'ardupilot_sitl.egg-info/SOURCES.txt'
+[0.476s] writing manifest file 'ardupilot_sitl.egg-info/SOURCES.txt'
+[0.507s] [32m[0mSetting top to                           :[0m [0m[32m[32m/home/sachin/ardu_ws/src/ardupilot[0m [0m
+[0.507s] [32m[0mSetting out to                           :[0m [0m[32m[32m/home/sachin/ardu_ws/src/ardupilot/build[0m [0m
+[0.520s] Built target ament_cmake_python_build_ardupilot_sitl_egg
+[0.522s] [32m[0mAutoconfiguration                        :[0m [0m[32m[32menabled[0m [0m
+[0.522s] [32m[0mChecking for program 'python'            :[0m [0m[32m[32m/home/sachin/.ros2_venv/bin/python3[0m [0m
+[0.918s] [32m[0mChecking for python version >= 3.9.0     :[0m [0m[32m[32m3.12.3[0m [0m
+[0.925s] [32m[0mSetting board to                         :[0m [0m[32m[32msitl[0m [0m
+[0.927s] Processing /home/sachin/ardu_ws/src/ardupilot/libraries/AP_HAL_SITL/hwdef/sitl/hwdef.dat
+[0.927s] Writing hwdef setup in /home/sachin/ardu_ws/src/ardupilot/build/sitl/hwdef.h
+[0.928s] [32m[0mUsing toolchain                          :[0m [0m[32m[32mnative[0m [0m
+[0.976s] [32m[0mChecking for 'g++' (C++ compiler)        :[0m [0m[32m[32m/usr/lib/ccache/g++[0m [0m
+[1.012s] [32m[0mChecking for 'gcc' (C compiler)          :[0m [0m[32m[32m/usr/lib/ccache/gcc[0m [0m
+[1.034s] [32m[0mChecking for c flags '-MMD'              :[0m [0m[32m[32myes[0m [0m
+[1.044s] [32m[0mChecking for cxx flags '-MMD'            :[0m [0m[32m[32myes[0m [0m
+[1.045s] [32m[0mCXX Compiler                             :[0m [0m[32m[32mg++ 13.3.0[0m [0m
+[1.126s] [32m[0mChecking for need to link with librt     :[0m [0m[32m[32mnot necessary[0m [0m
+[1.199s] [32m[0mChecking for feenableexcept              :[0m [0m[32m[32myes[0m [0m
+[1.200s] [32m[0mEnabling -Werror                         :[0m [0m[32m[32mno[0m [0m
+[1.201s] [32m[0mEnabled OpenDroneID                      :[0m [0m[32m[33mno[0m [0m
+[1.201s] [32m[0mEnabled firmware ID checking             :[0m [0m[32m[33mno[0m [0m
+[1.201s] [32m[0mGPS Debug Logging                        :[0m [0m[32m[33mno[0m [0m
+[1.202s] [32m[0mEnabled DDS                              :[0m [0m[32m[32myes[0m [0m
+[1.273s] [32m[0mChecking for HAVE_CMATH_ISFINITE         :[0m [0m[32m[32myes[0m [0m
+[1.334s] [32m[0mChecking for HAVE_CMATH_ISINF            :[0m [0m[32m[32myes[0m [0m
+[1.396s] [32m[0mChecking for HAVE_CMATH_ISNAN            :[0m [0m[32m[32myes[0m [0m
+[1.459s] [32m[0mChecking for NEED_CMATH_ISFINITE_STD_NAMESPACE :[0m [0m[32m[32myes[0m [0m
+[1.521s] [32m[0mChecking for NEED_CMATH_ISINF_STD_NAMESPACE    :[0m [0m[32m[32myes[0m [0m
+[1.586s] [32m[0mChecking for NEED_CMATH_ISNAN_STD_NAMESPACE    :[0m [0m[32m[32myes[0m [0m
+[1.651s] [32m[0mChecking for header endian.h                   :[0m [0m[32m[32myes[0m [0m
+[1.713s] [32m[0mChecking for header byteswap.h                 :[0m [0m[32m[32myes[0m [0m
+[1.774s] [32m[0mChecking for HAVE_MEMRCHR                      :[0m [0m[32m[32myes[0m [0m
+[1.775s] [32m[0mConfigured VSCode Intellisense:                :[0m [0m[32m[33mno[0m [0m
+[1.783s] [32m[0mDC_DSDL compiler in                            :[0m [0m[32m[32m/home/sachin/ardu_ws/src/ardupilot/modules/DroneCAN/dronecan_dsdlc[0m [0m
+[1.783s] [32m[0mSource is git repository                       :[0m [0m[32m[32myes[0m [0m
+[1.784s] [32m[0mUpdate submodules                              :[0m [0m[32m[32myes[0m [0m
+[1.786s] [32m[0mChecking for program 'git'                     :[0m [0m[32m[32m/usr/bin/git[0m [0m
+[1.787s] [32m[0mLittlefs                                       :[0m [0m[32m[33mdisabled[0m [0m
+[1.789s] [32m[0mChecking for program 'size'                    :[0m [0m[32m[32m/usr/bin/size[0m [0m
+[1.790s] [32m[0mBenchmarks                                     :[0m [0m[32m[33mdisabled[0m [0m
+[1.790s] [32m[0mUnit tests                                     :[0m [0m[32m[32menabled[0m [0m
+[1.790s] [32m[0mScripting                                      :[0m [0m[32m[32mmaybe[0m [0m
+[1.816s] [32m[0mChecking for program 'microxrceddsgen'         :[0m [0m[32m[32m/home/sachin/ardu_ws/Micro-XRCE-DDS-Gen/scripts/microxrceddsgen[0m [0m
+[1.834s] [32m[0mScripting runtime checks                       :[0m [0m[32m[32menabled[0m [0m
+[1.834s] [32m[0mDebug build                                    :[0m [0m[32m[33mdisabled[0m [0m
+[1.834s] [32m[0mCoverage build                                 :[0m [0m[32m[33mdisabled[0m [0m
+[1.834s] [32m[0mConsistent build                               :[0m [0m[32m[33mdisabled[0m [0m
+[1.834s] [32m[0mForce 32-bit build                             :[0m [0m[32m[33mdisabled[0m [0m
+[1.835s] [32m[0mChecking for program 'rsync'                   :[0m [0m[32m[32m/usr/bin/rsync[0m [0m
+[1.835s] [32mRemoving target_list file /home/sachin/ardu_ws/src/ardupilot/build/sitl/target_list[0m
+[1.944s] [32m'configure' finished successfully (1.437s)[0m
+[1.991s] Built target ardupilot_configure
+[2.428s] [32mWaf: Entering directory `/home/sachin/ardu_ws/src/ardupilot/build/sitl'[0m
+[2.594s] Embedding file default_params/airsim-quadX.parm:Tools/autotest/default_params/airsim-quadX.parm
+[2.594s] Embedding file default_params/airsim-rover.parm:Tools/autotest/default_params/airsim-rover.parm
+[2.594s] Embedding file default_params/balancebot.parm:Tools/autotest/default_params/balancebot.parm
+[2.594s] Embedding file default_params/blimp-motor.parm:Tools/autotest/default_params/blimp-motor.parm
+[2.594s] Embedding file default_params/blimp.parm:Tools/autotest/default_params/blimp.parm
+[2.594s] Embedding file default_params/copter-X.parm:Tools/autotest/default_params/copter-X.parm
+[2.594s] Embedding file default_params/copter-beacon.parm:Tools/autotest/default_params/copter-beacon.parm
+[2.594s] Embedding file default_params/copter-bfx.parm:Tools/autotest/default_params/copter-bfx.parm
+[2.594s] Embedding file default_params/copter-coax.parm:Tools/autotest/default_params/copter-coax.parm
+[2.594s] Embedding file default_params/copter-cwx.parm:Tools/autotest/default_params/copter-cwx.parm
+[2.594s] Embedding file default_params/copter-deca-cwx.parm:Tools/autotest/default_params/copter-deca-cwx.parm
+[2.595s] Embedding file default_params/copter-deca.parm:Tools/autotest/default_params/copter-deca.parm
+[2.595s] Embedding file default_params/copter-djix.parm:Tools/autotest/default_params/copter-djix.parm
+[2.595s] Embedding file default_params/copter-dodecahexa.parm:Tools/autotest/default_params/copter-dodecahexa.parm
+[2.595s] Embedding file default_params/copter-dotriaconta_octaquad_x.parm:Tools/autotest/default_params/copter-dotriaconta_octaquad_x.parm
+[2.595s] Embedding file default_params/copter-gimbal.parm:Tools/autotest/default_params/copter-gimbal.parm
+[2.595s] Embedding file default_params/copter-gps-for-yaw-nmea.parm:Tools/autotest/default_params/copter-gps-for-yaw-nmea.parm
+[2.595s] Embedding file default_params/copter-gps-for-yaw.parm:Tools/autotest/default_params/copter-gps-for-yaw.parm
+[2.595s] Embedding file default_params/copter-heli-ddfptail.parm:Tools/autotest/default_params/copter-heli-ddfptail.parm
+[2.595s] Embedding file default_params/copter-heli-ddvptail.parm:Tools/autotest/default_params/copter-heli-ddvptail.parm
+[2.595s] Embedding file default_params/copter-heli-dual.parm:Tools/autotest/default_params/copter-heli-dual.parm
+[2.595s] Embedding file default_params/copter-heli-gas.parm:Tools/autotest/default_params/copter-heli-gas.parm
+[2.595s] Embedding file default_params/copter-heli.parm:Tools/autotest/default_params/copter-heli.parm
+[2.595s] Embedding file default_params/copter-heliquad.parm:Tools/autotest/default_params/copter-heliquad.parm
+[2.595s] Embedding file default_params/copter-hexa-cwx.parm:Tools/autotest/default_params/copter-hexa-cwx.parm
+[2.595s] Embedding file default_params/copter-hexa-dji.parm:Tools/autotest/default_params/copter-hexa-dji.parm
+[2.595s] Embedding file default_params/copter-hexa.parm:Tools/autotest/default_params/copter-hexa.parm
+[2.595s] Embedding file default_params/copter-hexadeca_octa.parm:Tools/autotest/default_params/copter-hexadeca_octa.parm
+[2.596s] Embedding file default_params/copter-hexadeca_octa_cwx.parm:Tools/autotest/default_params/copter-hexadeca_octa_cwx.parm
+[2.596s] Embedding file default_params/copter-octa-cwx.parm:Tools/autotest/default_params/copter-octa-cwx.parm
+[2.596s] Embedding file default_params/copter-octa-dji.parm:Tools/autotest/default_params/copter-octa-dji.parm
+[2.596s] Embedding file default_params/copter-octa.parm:Tools/autotest/default_params/copter-octa.parm
+[2.596s] Embedding file default_params/copter-octaquad-cor.parm:Tools/autotest/default_params/copter-octaquad-cor.parm
+[2.596s] Embedding file default_params/copter-octaquad-cw-cor.parm:Tools/autotest/default_params/copter-octaquad-cw-cor.parm
+[2.596s] Embedding file default_params/copter-octaquad-cwx.parm:Tools/autotest/default_params/copter-octaquad-cwx.parm
+[2.596s] Embedding file default_params/copter-octaquad.parm:Tools/autotest/default_params/copter-octaquad.parm
+[2.596s] Embedding file default_params/copter-optflow.parm:Tools/autotest/default_params/copter-optflow.parm
+[2.596s] Embedding file default_params/copter-ppp-periph.parm:Tools/autotest/default_params/copter-ppp-periph.parm
+[2.596s] Embedding file default_params/copter-ppp.parm:Tools/autotest/default_params/copter-ppp.parm
+[2.596s] Embedding file default_params/copter-rangefinder.parm:Tools/autotest/default_params/copter-rangefinder.parm
+[2.596s] Embedding file default_params/copter-single.parm:Tools/autotest/default_params/copter-single.parm
+[2.596s] Embedding file default_params/copter-tri.parm:Tools/autotest/default_params/copter-tri.parm
+[2.596s] Embedding file default_params/copter-vicon.parm:Tools/autotest/default_params/copter-vicon.parm
+[2.596s] Embedding file default_params/copter-winch.parm:Tools/autotest/default_params/copter-winch.parm
+[2.596s] Embedding file default_params/copter-wind-estimates.parm:Tools/autotest/default_params/copter-wind-estimates.parm
+[2.597s] Embedding file default_params/copter-y6.parm:Tools/autotest/default_params/copter-y6.parm
+[2.597s] Embedding file default_params/copter.parm:Tools/autotest/default_params/copter.parm
+[2.597s] Embedding file default_params/firefly.parm:Tools/autotest/default_params/firefly.parm
+[2.597s] Embedding file default_params/gazebo-iris.parm:Tools/autotest/default_params/gazebo-iris.parm
+[2.597s] Embedding file default_params/gazebo-zephyr.parm:Tools/autotest/default_params/gazebo-zephyr.parm
+[2.597s] Embedding file default_params/glider.parm:Tools/autotest/default_params/glider.parm
+[2.597s] Embedding file default_params/motorboat.parm:Tools/autotest/default_params/motorboat.parm
+[2.597s] Embedding file default_params/msposd.parm:Tools/autotest/default_params/msposd.parm
+[2.597s] Embedding file default_params/periph-battmon.parm:Tools/autotest/default_params/periph-battmon.parm
+[2.597s] Embedding file default_params/periph-compass.parm:Tools/autotest/default_params/periph-compass.parm
+[2.597s] Embedding file default_params/periph-ppp.parm:Tools/autotest/default_params/periph-ppp.parm
+[2.597s] Embedding file default_params/periph.parm:Tools/autotest/default_params/periph.parm
+[2.597s] Embedding file default_params/plane-dspoilers.parm:Tools/autotest/default_params/plane-dspoilers.parm
+[2.597s] Embedding file default_params/plane-elevons.parm:Tools/autotest/default_params/plane-elevons.parm
+[2.597s] Embedding file default_params/plane-ice.parm:Tools/autotest/default_params/plane-ice.parm
+[2.597s] Embedding file default_params/plane-jet.parm:Tools/autotest/default_params/plane-jet.parm
+[2.597s] Embedding file default_params/plane-redundant.parm:Tools/autotest/default_params/plane-redundant.parm
+[2.597s] Embedding file default_params/plane-soaring.parm:Tools/autotest/default_params/plane-soaring.parm
+[2.598s] Embedding file default_params/plane-tailsitter.parm:Tools/autotest/default_params/plane-tailsitter.parm
+[2.598s] Embedding file default_params/plane-vtail.parm:Tools/autotest/default_params/plane-vtail.parm
+[2.598s] Embedding file default_params/quad-can.parm:Tools/autotest/default_params/quad-can.parm
+[2.598s] Embedding file default_params/quad-periph.parm:Tools/autotest/default_params/quad-periph.parm
+[2.598s] Embedding file default_params/quadplane-can.parm:Tools/autotest/default_params/quadplane-can.parm
+[2.598s] Embedding file default_params/quadplane-cl84.parm:Tools/autotest/default_params/quadplane-cl84.parm
+[2.598s] Embedding file default_params/quadplane-copter_tailsitter.parm:Tools/autotest/default_params/quadplane-copter_tailsitter.parm
+[2.598s] Embedding file default_params/quadplane-ice.parm:Tools/autotest/default_params/quadplane-ice.parm
+[2.598s] Embedding file default_params/quadplane-periph.parm:Tools/autotest/default_params/quadplane-periph.parm
+[2.598s] Embedding file default_params/quadplane-ppp-periph.parm:Tools/autotest/default_params/quadplane-ppp-periph.parm
+[2.598s] Embedding file default_params/quadplane-ppp.parm:Tools/autotest/default_params/quadplane-ppp.parm
+[2.598s] Embedding file default_params/quadplane-tilt.parm:Tools/autotest/default_params/quadplane-tilt.parm
+[2.598s] Embedding file default_params/quadplane-tilthvec.parm:Tools/autotest/default_params/quadplane-tilthvec.parm
+[2.598s] Embedding file default_params/quadplane-tilttri.parm:Tools/autotest/default_params/quadplane-tilttri.parm
+[2.598s] Embedding file default_params/quadplane-tilttrivec.parm:Tools/autotest/default_params/quadplane-tilttrivec.parm
+[2.598s] Embedding file default_params/quadplane-tri.parm:Tools/autotest/default_params/quadplane-tri.parm
+[2.598s] Embedding file default_params/quadplane.parm:Tools/autotest/default_params/quadplane.parm
+[2.599s] Embedding file default_params/rover-omni3mecanum.parm:Tools/autotest/default_params/rover-omni3mecanum.parm
+[2.599s] Embedding file default_params/rover-skid.parm:Tools/autotest/default_params/rover-skid.parm
+[2.599s] Embedding file default_params/rover-vectored.parm:Tools/autotest/default_params/rover-vectored.parm
+[2.599s] Embedding file default_params/rover.parm:Tools/autotest/default_params/rover.parm
+[2.599s] Embedding file default_params/sailboat-motor.parm:Tools/autotest/default_params/sailboat-motor.parm
+[2.599s] Embedding file default_params/sailboat.parm:Tools/autotest/default_params/sailboat.parm
+[2.599s] Embedding file default_params/stratoblimp.parm:Tools/autotest/default_params/stratoblimp.parm
+[2.599s] Embedding file default_params/sub-6dof.parm:Tools/autotest/default_params/sub-6dof.parm
+[2.599s] Embedding file default_params/sub-gps-for-yaw-nmea.parm:Tools/autotest/default_params/sub-gps-for-yaw-nmea.parm
+[2.599s] Embedding file default_params/sub.parm:Tools/autotest/default_params/sub.parm
+[2.599s] Embedding file default_params/tracker-gps-for-yaw.parm:Tools/autotest/default_params/tracker-gps-for-yaw.parm
+[2.599s] Embedding file locations.txt:Tools/autotest/locations.txt
+[2.599s] Embedding file models/Callisto.json:Tools/autotest/models/Callisto.json
+[2.599s] Embedding file models/Callisto.parm:Tools/autotest/models/Callisto.parm
+[2.599s] Embedding file models/freestyle.json:Tools/autotest/models/freestyle.json
+[2.599s] Embedding file models/freestyle.parm:Tools/autotest/models/freestyle.parm
+[2.599s] Embedding file models/heliquad.json:Tools/autotest/models/heliquad.json
+[2.599s] Embedding file models/plane-3d.parm:Tools/autotest/models/plane-3d.parm
+[2.600s] Embedding file models/plane-reverse-rc-pitch-yaw.parm:Tools/autotest/models/plane-reverse-rc-pitch-yaw.parm
+[2.600s] Embedding file models/plane-reverse-servo-pitch-yaw.parm:Tools/autotest/models/plane-reverse-servo-pitch-yaw.parm
+[2.600s] Embedding file models/plane.parm:Tools/autotest/models/plane.parm
+[2.600s] Embedding file models/skywalker_2013.json:Tools/autotest/models/skywalker_2013.json
+[2.600s] Embedding file models/xplane_heli.json:Tools/autotest/models/xplane_heli.json
+[2.600s] Embedding file models/xplane_plane.json:Tools/autotest/models/xplane_plane.json
+[2.600s] Embedding file vehicleinfo.json:Tools/autotest/pysim/vehicleinfo.json
+[2.601s] Building /home/sachin/ardu_ws/src/ardupilot/build/sitl/modules/Micro-XRCE-DDS-Client/include/uxr/client/config.h
+[2.601s] Building /home/sachin/ardu_ws/src/ardupilot/build/sitl/modules/Micro-CDR/include/ucdr/config.h
+[4.735s] [32mNo target_list file found, creating[0m
+[4.735s] [32mGenerating compile_commands.json[0m
+[4.831s] [32mGenerating compile_commands.json[0m
+[4.895s] [32mGenerating compile_commands.json[0m
+[4.950s] [32mGenerating compile_commands.json[0m
+[5.040s] [32mGenerating compile_commands.json[0m
+[5.153s] [32mGenerating compile_commands.json[0m
+[5.249s] [32mGenerating compile_commands.json[0m
+[5.290s] [32mBuild commands will be stored in build/sitl/compile_commands.json[0m
+[5.411s] [32mGenerating compile_commands.json[0m
+[5.419s] [32mBuild commands will be stored in build/sitl/compile_commands.json[0m
+[5.510s] [32mBuild commands will be stored in build/sitl/compile_commands.json[0m
+[5.624s] [32mGenerating compile_commands.json[0m
+[5.632s] [32mBuild commands will be stored in build/sitl/compile_commands.json[0m
+[5.721s] [32mBuild commands will be stored in build/sitl/compile_commands.json[0m
+[5.831s] [32mGenerating compile_commands.json[0m
+[5.840s] [32mBuild commands will be stored in build/sitl/compile_commands.json[0m
+[5.928s] [32mBuild commands will be stored in build/sitl/compile_commands.json[0m
+[6.040s] [32mGenerating compile_commands.json[0m
+[6.048s] [32mBuild commands will be stored in build/sitl/compile_commands.json[0m
+[6.138s] [32mBuild commands will be stored in build/sitl/compile_commands.json[0m
+[6.231s] [32mBuild commands will be stored in build/sitl/compile_commands.json[0m
+[6.345s] [32mGenerating compile_commands.json[0m
+[6.357s] [32mBuild commands will be stored in build/sitl/compile_commands.json[0m
+[6.471s] [32mBuild commands will be stored in build/sitl/compile_commands.json[0m
+[6.576s] [32mGenerating compile_commands.json[0m
+[6.585s] [32mBuild commands will be stored in build/sitl/compile_commands.json[0m
+[8.123s] [2044/2371] Linking [33mbuild/sitl/bin/antennatracker[0m
+[8.242s] [2126/2371] Linking [33mbuild/sitl/bin/arducopter[0m
+[8.275s] [2194/2371] Linking [33mbuild/sitl/bin/arducopter-heli[0m
+[8.386s] [2259/2371] Linking [33mbuild/sitl/bin/arduplane[0m
+[8.471s] [2297/2371] Linking [33mbuild/sitl/bin/ardusub[0m
+[8.549s] [2325/2371] Linking [33mbuild/sitl/bin/blimp[0m
+[8.662s] [2364/2371] Linking [33mbuild/sitl/bin/ardurover[0m
+[8.676s] [2365/2371] checking symbols [36mbuild/sitl/bin/antennatracker[0m
+[8.915s] [2366/2371] checking symbols [36mbuild/sitl/bin/arducopter[0m
+[8.961s] [2367/2371] checking symbols [36mbuild/sitl/bin/arducopter-heli[0m
+[9.097s] [2368/2371] checking symbols [36mbuild/sitl/bin/ardusub[0m
+[9.109s] [2369/2371] checking symbols [36mbuild/sitl/bin/blimp[0m
+[9.163s] [2370/2371] checking symbols [36mbuild/sitl/bin/arduplane[0m
+[9.284s] [2371/2371] checking symbols [36mbuild/sitl/bin/ardurover[0m
+[9.339s] [32mWaf: Leaving directory `/home/sachin/ardu_ws/src/ardupilot/build/sitl'[0m
+[9.339s] [32m[0m
+[9.339s] [32m[0m[01;1mBUILD SUMMARY[0m
+[9.339s] [32m[0m[01;1mBuild directory: [0m/home/sachin/ardu_ws/src/ardupilot/build/sitl[0m
+[9.370s] [32m[0m[01;1mTarget               Text (B)  Data (B)  BSS (B)  Total Flash Used (B)  Free Flash (B)  External Flash Used (B)[0m
+[9.370s] ---------------------------------------------------------------------------------------------------------------
+[9.370s] bin/antennatracker    3472111    150053   265560               3622164  Not Applicable  Not Applicable         
+[9.370s] bin/arducopter        4643627    218429   284392               4862056  Not Applicable  Not Applicable         
+[9.370s] bin/arducopter-heli   4636099    219485   285288               4855584  Not Applicable  Not Applicable         
+[9.370s] bin/arduplane         4611451    221653   283112               4833104  Not Applicable  Not Applicable         
+[9.371s] bin/ardusub           4220483    192293   285016               4412776  Not Applicable  Not Applicable         
+[9.371s] bin/blimp             3564927    154461   268056               3719388  Not Applicable  Not Applicable         
+[9.371s] bin/ardurover         4301827    196493   282728               4498320  Not Applicable  Not Applicable         
+[9.371s] [32m[0m
+[9.371s] [32m'build' finished successfully (7.068s)[0m
+[9.486s] Built target ardupilot_build
+[9.504s] Invoked command in '/home/sachin/ardu_ws/build/ardupilot_sitl' returned '0': AMENT_PREFIX_PATH=/home/sachin/ardu_ws/install/micro_ros_agent:/home/sachin/ardu_ws/install/ardupilot_msgs:${AMENT_PREFIX_PATH} CMAKE_PREFIX_PATH=/home/sachin/ardu_ws/install/micro_ros_agent:/home/sachin/ardu_ws/install/ardupilot_msgs:/opt/ros/jazzy/opt/gz_sim_vendor:/opt/ros/jazzy/opt/gz_sensors_vendor:/opt/ros/jazzy/opt/gz_physics_vendor:/opt/ros/jazzy/opt/sdformat_vendor:/opt/ros/jazzy/opt/gz_gui_vendor:/opt/ros/jazzy/opt/gz_transport_vendor:/opt/ros/jazzy/opt/gz_rendering_vendor:/opt/ros/jazzy/opt/gz_plugin_vendor:/opt/ros/jazzy/opt/gz_fuel_tools_vendor:/opt/ros/jazzy/opt/gz_msgs_vendor:/opt/ros/jazzy/opt/gz_common_vendor:/opt/ros/jazzy/opt/gz_math_vendor:/opt/ros/jazzy/opt/gz_utils_vendor:/opt/ros/jazzy/opt/gz_tools_vendor:/opt/ros/jazzy/opt/gz_ogre_next_vendor:/opt/ros/jazzy/opt/gz_dartsim_vendor:/opt/ros/jazzy/opt/gz_cmake_vendor:/opt/ros/jazzy DEBUGINFOD_URLS=https://debuginfod.ubuntu.com LD_LIBRARY_PATH=/home/sachin/ardu_ws/install/micro_ros_agent/lib:/home/sachin/ardu_ws/install/ardupilot_msgs/lib:${LD_LIBRARY_PATH} PS1=(.ros2_venv) \[\e]0;\u@\h: \w\a\]${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]\$ PYTHONPATH=/home/sachin/ardu_ws/install/ardupilot_msgs/lib/python3.12/site-packages:${PYTHONPATH} VIRTUAL_ENV_PROMPT=(.ros2_venv) /usr/bin/cmake --build /home/sachin/ardu_ws/build/ardupilot_sitl -- -j12 -l12
+[9.512s] Invoking command in '/home/sachin/ardu_ws/build/ardupilot_sitl': AMENT_PREFIX_PATH=/home/sachin/ardu_ws/install/micro_ros_agent:/home/sachin/ardu_ws/install/ardupilot_msgs:${AMENT_PREFIX_PATH} CMAKE_PREFIX_PATH=/home/sachin/ardu_ws/install/micro_ros_agent:/home/sachin/ardu_ws/install/ardupilot_msgs:/opt/ros/jazzy/opt/gz_sim_vendor:/opt/ros/jazzy/opt/gz_sensors_vendor:/opt/ros/jazzy/opt/gz_physics_vendor:/opt/ros/jazzy/opt/sdformat_vendor:/opt/ros/jazzy/opt/gz_gui_vendor:/opt/ros/jazzy/opt/gz_transport_vendor:/opt/ros/jazzy/opt/gz_rendering_vendor:/opt/ros/jazzy/opt/gz_plugin_vendor:/opt/ros/jazzy/opt/gz_fuel_tools_vendor:/opt/ros/jazzy/opt/gz_msgs_vendor:/opt/ros/jazzy/opt/gz_common_vendor:/opt/ros/jazzy/opt/gz_math_vendor:/opt/ros/jazzy/opt/gz_utils_vendor:/opt/ros/jazzy/opt/gz_tools_vendor:/opt/ros/jazzy/opt/gz_ogre_next_vendor:/opt/ros/jazzy/opt/gz_dartsim_vendor:/opt/ros/jazzy/opt/gz_cmake_vendor:/opt/ros/jazzy DEBUGINFOD_URLS=https://debuginfod.ubuntu.com LD_LIBRARY_PATH=/home/sachin/ardu_ws/install/micro_ros_agent/lib:/home/sachin/ardu_ws/install/ardupilot_msgs/lib:${LD_LIBRARY_PATH} PS1=(.ros2_venv) \[\e]0;\u@\h: \w\a\]${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]\$ PYTHONPATH=/home/sachin/ardu_ws/install/ardupilot_msgs/lib/python3.12/site-packages:${PYTHONPATH} VIRTUAL_ENV_PROMPT=(.ros2_venv) /usr/bin/cmake --install /home/sachin/ardu_ws/build/ardupilot_sitl
+[9.528s] -- Install configuration: ""
+[9.528s] -- Installing: /home/sachin/ardu_ws/install/ardupilot_sitl/bin/antennatracker
+[9.532s] -- Installing: /home/sachin/ardu_ws/install/ardupilot_sitl/bin/arducopter
+[9.537s] -- Installing: /home/sachin/ardu_ws/install/ardupilot_sitl/bin/arducopter-heli
+[9.543s] -- Installing: /home/sachin/ardu_ws/install/ardupilot_sitl/bin/arduplane
+[9.548s] -- Installing: /home/sachin/ardu_ws/install/ardupilot_sitl/bin/ardurover
+[9.554s] -- Installing: /home/sachin/ardu_ws/install/ardupilot_sitl/bin/ardusub
+[9.561s] -- Installing: /home/sachin/ardu_ws/install/ardupilot_sitl/bin/blimp
+[9.568s] -- Up-to-date: /home/sachin/ardu_ws/install/ardupilot_sitl/.//lib
+[9.569s] -- Up-to-date: /home/sachin/ardu_ws/install/ardupilot_sitl/.//lib/libBlimp_libs.a
+[9.569s] -- Up-to-date: /home/sachin/ardu_ws/install/ardupilot_sitl/.//lib/libArduPlane_libs.a
+[9.569s] -- Up-to-date: /home/sachin/ardu_ws/install/ardupilot_sitl/.//lib/libArduSub_libs.a
+[9.569s] -- Up-to-date: /home/sachin/ardu_ws/install/ardupilot_sitl/.//lib/libAntennaTracker_libs.a
+[9.569s] -- Up-to-date: /home/sachin/ardu_ws/install/ardupilot_sitl/.//lib/libArduCopter_libs.a
+[9.569s] -- Up-to-date: /home/sachin/ardu_ws/install/ardupilot_sitl/.//lib/libRover_libs.a
+[9.569s] -- Up-to-date: /home/sachin/ardu_ws/install/ardupilot_sitl/share/ardupilot_sitl//launch
+[9.570s] -- Up-to-date: /home/sachin/ardu_ws/install/ardupilot_sitl/share/ardupilot_sitl//launch/micro_ros_agent.launch.py
+[9.570s] -- Up-to-date: /home/sachin/ardu_ws/install/ardupilot_sitl/share/ardupilot_sitl//launch/sitl_mavproxy.launch.py
+[9.570s] -- Up-to-date: /home/sachin/ardu_ws/install/ardupilot_sitl/share/ardupilot_sitl//launch/mavproxy.launch.py
+[9.570s] -- Up-to-date: /home/sachin/ardu_ws/install/ardupilot_sitl/share/ardupilot_sitl//launch/sitl_dds_udp.launch.py
+[9.570s] -- Up-to-date: /home/sachin/ardu_ws/install/ardupilot_sitl/share/ardupilot_sitl//launch/sitl_dds_serial.launch.py
+[9.570s] -- Up-to-date: /home/sachin/ardu_ws/install/ardupilot_sitl/share/ardupilot_sitl//launch/sitl.launch.py
+[9.570s] -- Up-to-date: /home/sachin/ardu_ws/install/ardupilot_sitl/share/ardupilot_sitl//launch/virtual_ports.launch.py
+[9.571s] -- Up-to-date: /home/sachin/ardu_ws/install/ardupilot_sitl/share/ardupilot_sitl/config/default_params
+[9.571s] -- Up-to-date: /home/sachin/ardu_ws/install/ardupilot_sitl/share/ardupilot_sitl/config/default_params/dds_use_ns.parm
+[9.571s] -- Up-to-date: /home/sachin/ardu_ws/install/ardupilot_sitl/share/ardupilot_sitl/config/default_params/dds_serial.parm
+[9.571s] -- Up-to-date: /home/sachin/ardu_ws/install/ardupilot_sitl/share/ardupilot_sitl/config/default_params/dds_udp.parm
+[9.571s] -- Up-to-date: /home/sachin/ardu_ws/install/ardupilot_sitl/share/ardupilot_sitl/config//default_params
+[9.571s] -- Up-to-date: /home/sachin/ardu_ws/install/ardupilot_sitl/share/ardupilot_sitl/config//default_params/copter-dodecahexa.parm
+[9.571s] -- Up-to-date: /home/sachin/ardu_ws/install/ardupilot_sitl/share/ardupilot_sitl/config//default_params/quadplane-ice.parm
+[9.572s] -- Up-to-date: /home/sachin/ardu_ws/install/ardupilot_sitl/share/ardupilot_sitl/config//default_params/quadplane-tilt.parm
+[9.572s] -- Up-to-date: /home/sachin/ardu_ws/install/ardupilot_sitl/share/ardupilot_sitl/config//default_params/periph-battmon.parm
+[9.572s] -- Up-to-date: /home/sachin/ardu_ws/install/ardupilot_sitl/share/ardupilot_sitl/config//default_params/copter-hexadeca_octa.parm
+[9.572s] -- Up-to-date: /home/sachin/ardu_ws/install/ardupilot_sitl/share/ardupilot_sitl/config//default_params/quadplane-tilttrivec.parm
+[9.572s] -- Up-to-date: /home/sachin/ardu_ws/install/ardupilot_sitl/share/ardupilot_sitl/config//default_params/copter-octaquad-cor.parm
+[9.572s] -- Up-to-date: /home/sachin/ardu_ws/install/ardupilot_sitl/share/ardupilot_sitl/config//default_params/plane-redundant.parm
+[9.572s] -- Up-to-date: /home/sachin/ardu_ws/install/ardupilot_sitl/share/ardupilot_sitl/config//default_params/quadplane-copter_tailsitter.parm
+[9.572s] -- Up-to-date: /home/sachin/ardu_ws/install/ardupilot_sitl/share/ardupilot_sitl/config//default_params/copter-octaquad.parm
+[9.572s] -- Up-to-date: /home/sachin/ardu_ws/install/ardupilot_sitl/share/ardupilot_sitl/config//default_params/quadplane.parm
+[9.573s] -- Up-to-date: /home/sachin/ardu_ws/install/ardupilot_sitl/share/ardupilot_sitl/config//default_params/copter-heli-gas.parm
+[9.573s] -- Up-to-date: /home/sachin/ardu_ws/install/ardupilot_sitl/share/ardupilot_sitl/config//default_params/quadplane-can.parm
+[9.573s] -- Up-to-date: /home/sachin/ardu_ws/install/ardupilot_sitl/share/ardupilot_sitl/config//default_params/rover-vectored.parm
+[9.573s] -- Up-to-date: /home/sachin/ardu_ws/install/ardupilot_sitl/share/ardupilot_sitl/config//default_params/msposd.parm
+[9.573s] -- Up-to-date: /home/sachin/ardu_ws/install/ardupilot_sitl/share/ardupilot_sitl/config//default_params/sub-6dof.parm
+[9.573s] -- Up-to-date: /home/sachin/ardu_ws/install/ardupilot_sitl/share/ardupilot_sitl/config//default_params/gazebo-iris.parm
+[9.573s] -- Up-to-date: /home/sachin/ardu_ws/install/ardupilot_sitl/share/ardupilot_sitl/config//default_params/airsim-rover.parm
+[9.573s] -- Up-to-date: /home/sachin/ardu_ws/install/ardupilot_sitl/share/ardupilot_sitl/config//default_params/copter-ppp-periph.parm
+[9.573s] -- Up-to-date: /home/sachin/ardu_ws/install/ardupilot_sitl/share/ardupilot_sitl/config//default_params/copter-X.parm
+[9.574s] -- Up-to-date: /home/sachin/ardu_ws/install/ardupilot_sitl/share/ardupilot_sitl/config//default_params/periph-compass.parm
+[9.574s] -- Up-to-date: /home/sachin/ardu_ws/install/ardupilot_sitl/share/ardupilot_sitl/config//default_params/quadplane-ppp-periph.parm
+[9.574s] -- Up-to-date: /home/sachin/ardu_ws/install/ardupilot_sitl/share/ardupilot_sitl/config//default_params/copter-octa-dji.parm
+[9.574s] -- Up-to-date: /home/sachin/ardu_ws/install/ardupilot_sitl/share/ardupilot_sitl/config//default_params/plane-soaring.parm
+[9.574s] -- Up-to-date: /home/sachin/ardu_ws/install/ardupilot_sitl/share/ardupilot_sitl/config//default_params/rover-skid.parm
+[9.574s] -- Up-to-date: /home/sachin/ardu_ws/install/ardupilot_sitl/share/ardupilot_sitl/config//default_params/copter-hexa.parm
+[9.575s] -- Up-to-date: /home/sachin/ardu_ws/install/ardupilot_sitl/share/ardupilot_sitl/config//default_params/copter-beacon.parm
+[9.575s] -- Up-to-date: /home/sachin/ardu_ws/install/ardupilot_sitl/share/ardupilot_sitl/config//default_params/plane-vtail.parm
+[9.575s] -- Up-to-date: /home/sachin/ardu_ws/install/ardupilot_sitl/share/ardupilot_sitl/config//default_params/plane-tailsitter.parm
+[9.575s] -- Up-to-date: /home/sachin/ardu_ws/install/ardupilot_sitl/share/ardupilot_sitl/config//default_params/quadplane-tri.parm
+[9.575s] -- Up-to-date: /home/sachin/ardu_ws/install/ardupilot_sitl/share/ardupilot_sitl/config//default_params/copter-heli-ddfptail.parm
+[9.575s] -- Up-to-date: /home/sachin/ardu_ws/install/ardupilot_sitl/share/ardupilot_sitl/config//default_params/quadplane-periph.parm
+[9.575s] -- Up-to-date: /home/sachin/ardu_ws/install/ardupilot_sitl/share/ardupilot_sitl/config//default_params/blimp.parm
+[9.575s] -- Up-to-date: /home/sachin/ardu_ws/install/ardupilot_sitl/share/ardupilot_sitl/config//default_params/blimp-motor.parm
+[9.575s] -- Up-to-date: /home/sachin/ardu_ws/install/ardupilot_sitl/share/ardupilot_sitl/config//default_params/copter-deca.parm
+[9.575s] -- Up-to-date: /home/sachin/ardu_ws/install/ardupilot_sitl/share/ardupilot_sitl/config//default_params/quadplane-cl84.parm
+[9.576s] -- Up-to-date: /home/sachin/ardu_ws/install/ardupilot_sitl/share/ardupilot_sitl/config//default_params/copter-gps-for-yaw-nmea.parm
+[9.576s] -- Up-to-date: /home/sachin/ardu_ws/install/ardupilot_sitl/share/ardupilot_sitl/config//default_params/gazebo-zephyr.parm
+[9.576s] -- Up-to-date: /home/sachin/ardu_ws/install/ardupilot_sitl/share/ardupilot_sitl/config//default_params/copter-vicon.parm
+[9.576s] -- Up-to-date: /home/sachin/ardu_ws/install/ardupilot_sitl/share/ardupilot_sitl/config//default_params/sub.parm
+[9.576s] -- Up-to-date: /home/sachin/ardu_ws/install/ardupilot_sitl/share/ardupilot_sitl/config//default_params/quadplane-tilttri.parm
+[9.576s] -- Up-to-date: /home/sachin/ardu_ws/install/ardupilot_sitl/share/ardupilot_sitl/config//default_params/copter-ppp.parm
+[9.576s] -- Up-to-date: /home/sachin/ardu_ws/install/ardupilot_sitl/share/ardupilot_sitl/config//default_params/copter-winch.parm
+[9.576s] -- Up-to-date: /home/sachin/ardu_ws/install/ardupilot_sitl/share/ardupilot_sitl/config//default_params/copter-tri.parm
+[9.576s] -- Up-to-date: /home/sachin/ardu_ws/install/ardupilot_sitl/share/ardupilot_sitl/config//default_params/copter-wind-estimates.parm
+[9.576s] -- Up-to-date: /home/sachin/ardu_ws/install/ardupilot_sitl/share/ardupilot_sitl/config//default_params/copter-gimbal.parm
+[9.576s] -- Up-to-date: /home/sachin/ardu_ws/install/ardupilot_sitl/share/ardupilot_sitl/config//default_params/tracker-gps-for-yaw.parm
+[9.577s] -- Up-to-date: /home/sachin/ardu_ws/install/ardupilot_sitl/share/ardupilot_sitl/config//default_params/copter-heli-ddvptail.parm
+[9.577s] -- Up-to-date: /home/sachin/ardu_ws/install/ardupilot_sitl/share/ardupilot_sitl/config//default_params/copter-octa.parm
+[9.577s] -- Up-to-date: /home/sachin/ardu_ws/install/ardupilot_sitl/share/ardupilot_sitl/config//default_params/stratoblimp.parm
+[9.577s] -- Up-to-date: /home/sachin/ardu_ws/install/ardupilot_sitl/share/ardupilot_sitl/config//default_params/rover-omni3mecanum.parm
+[9.577s] -- Up-to-date: /home/sachin/ardu_ws/install/ardupilot_sitl/share/ardupilot_sitl/config//default_params/copter-single.parm
+[9.577s] -- Up-to-date: /home/sachin/ardu_ws/install/ardupilot_sitl/share/ardupilot_sitl/config//default_params/copter-rangefinder.parm
+[9.577s] -- Up-to-date: /home/sachin/ardu_ws/install/ardupilot_sitl/share/ardupilot_sitl/config//default_params/plane-jet.parm
+[9.577s] -- Up-to-date: /home/sachin/ardu_ws/install/ardupilot_sitl/share/ardupilot_sitl/config//default_params/periph-ppp.parm
+[9.577s] -- Up-to-date: /home/sachin/ardu_ws/install/ardupilot_sitl/share/ardupilot_sitl/config//default_params/copter-dotriaconta_octaquad_x.parm
+[9.577s] -- Up-to-date: /home/sachin/ardu_ws/install/ardupilot_sitl/share/ardupilot_sitl/config//default_params/periph.parm
+[9.578s] -- Up-to-date: /home/sachin/ardu_ws/install/ardupilot_sitl/share/ardupilot_sitl/config//default_params/quad-periph.parm
+[9.578s] -- Up-to-date: /home/sachin/ardu_ws/install/ardupilot_sitl/share/ardupilot_sitl/config//default_params/copter-deca-cwx.parm
+[9.578s] -- Up-to-date: /home/sachin/ardu_ws/install/ardupilot_sitl/share/ardupilot_sitl/config//default_params/copter-djix.parm
+[9.578s] -- Up-to-date: /home/sachin/ardu_ws/install/ardupilot_sitl/share/ardupilot_sitl/config//default_params/copter-cwx.parm
+[9.578s] -- Up-to-date: /home/sachin/ardu_ws/install/ardupilot_sitl/share/ardupilot_sitl/config//default_params/copter-octaquad-cwx.parm
+[9.578s] -- Up-to-date: /home/sachin/ardu_ws/install/ardupilot_sitl/share/ardupilot_sitl/config//default_params/copter-octaquad-cw-cor.parm
+[9.578s] -- Up-to-date: /home/sachin/ardu_ws/install/ardupilot_sitl/share/ardupilot_sitl/config//default_params/firefly.parm
+[9.578s] -- Up-to-date: /home/sachin/ardu_ws/install/ardupilot_sitl/share/ardupilot_sitl/config//default_params/quadplane-ppp.parm
+[9.578s] -- Up-to-date: /home/sachin/ardu_ws/install/ardupilot_sitl/share/ardupilot_sitl/config//default_params/motorboat.parm
+[9.578s] -- Up-to-date: /home/sachin/ardu_ws/install/ardupilot_sitl/share/ardupilot_sitl/config//default_params/copter-bfx.parm
+[9.578s] -- Up-to-date: /home/sachin/ardu_ws/install/ardupilot_sitl/share/ardupilot_sitl/config//default_params/copter-coax.parm
+[9.579s] -- Up-to-date: /home/sachin/ardu_ws/install/ardupilot_sitl/share/ardupilot_sitl/config//default_params/copter-gps-for-yaw.parm
+[9.579s] -- Up-to-date: /home/sachin/ardu_ws/install/ardupilot_sitl/share/ardupilot_sitl/config//default_params/copter-hexa-dji.parm
+[9.579s] -- Up-to-date: /home/sachin/ardu_ws/install/ardupilot_sitl/share/ardupilot_sitl/config//default_params/sub-gps-for-yaw-nmea.parm
+[9.579s] -- Up-to-date: /home/sachin/ardu_ws/install/ardupilot_sitl/share/ardupilot_sitl/config//default_params/sailboat.parm
+[9.579s] -- Up-to-date: /home/sachin/ardu_ws/install/ardupilot_sitl/share/ardupilot_sitl/config//default_params/copter-y6.parm
+[9.579s] -- Up-to-date: /home/sachin/ardu_ws/install/ardupilot_sitl/share/ardupilot_sitl/config//default_params/plane-dspoilers.parm
+[9.579s] -- Up-to-date: /home/sachin/ardu_ws/install/ardupilot_sitl/share/ardupilot_sitl/config//default_params/glider.parm
+[9.579s] -- Up-to-date: /home/sachin/ardu_ws/install/ardupilot_sitl/share/ardupilot_sitl/config//default_params/copter-hexadeca_octa_cwx.parm
+[9.579s] -- Up-to-date: /home/sachin/ardu_ws/install/ardupilot_sitl/share/ardupilot_sitl/config//default_params/copter.parm
+[9.579s] -- Up-to-date: /home/sachin/ardu_ws/install/ardupilot_sitl/share/ardupilot_sitl/config//default_params/quadplane-tilthvec.parm
+[9.579s] -- Up-to-date: /home/sachin/ardu_ws/install/ardupilot_sitl/share/ardupilot_sitl/config//default_params/quad-can.parm
+[9.579s] -- Up-to-date: /home/sachin/ardu_ws/install/ardupilot_sitl/share/ardupilot_sitl/config//default_params/plane-ice.parm
+[9.580s] -- Up-to-date: /home/sachin/ardu_ws/install/ardupilot_sitl/share/ardupilot_sitl/config//default_params/airsim-quadX.parm
+[9.580s] -- Up-to-date: /home/sachin/ardu_ws/install/ardupilot_sitl/share/ardupilot_sitl/config//default_params/copter-heli-dual.parm
+[9.580s] -- Up-to-date: /home/sachin/ardu_ws/install/ardupilot_sitl/share/ardupilot_sitl/config//default_params/balancebot.parm
+[9.580s] -- Up-to-date: /home/sachin/ardu_ws/install/ardupilot_sitl/share/ardupilot_sitl/config//default_params/copter-optflow.parm
+[9.580s] -- Up-to-date: /home/sachin/ardu_ws/install/ardupilot_sitl/share/ardupilot_sitl/config//default_params/rover.parm
+[9.580s] -- Up-to-date: /home/sachin/ardu_ws/install/ardupilot_sitl/share/ardupilot_sitl/config//default_params/plane-elevons.parm
+[9.580s] -- Up-to-date: /home/sachin/ardu_ws/install/ardupilot_sitl/share/ardupilot_sitl/config//default_params/copter-hexa-cwx.parm
+[9.580s] -- Up-to-date: /home/sachin/ardu_ws/install/ardupilot_sitl/share/ardupilot_sitl/config//default_params/copter-heli.parm
+[9.580s] -- Up-to-date: /home/sachin/ardu_ws/install/ardupilot_sitl/share/ardupilot_sitl/config//default_params/copter-octa-cwx.parm
+[9.580s] -- Up-to-date: /home/sachin/ardu_ws/install/ardupilot_sitl/share/ardupilot_sitl/config//default_params/copter-heliquad.parm
+[9.581s] -- Up-to-date: /home/sachin/ardu_ws/install/ardupilot_sitl/share/ardupilot_sitl/config//default_params/sailboat-motor.parm
+[9.581s] -- Up-to-date: /home/sachin/ardu_ws/install/ardupilot_sitl/share/ardupilot_sitl/config//models
+[9.581s] -- Up-to-date: /home/sachin/ardu_ws/install/ardupilot_sitl/share/ardupilot_sitl/config//models/plane-3d.parm
+[9.581s] -- Up-to-date: /home/sachin/ardu_ws/install/ardupilot_sitl/share/ardupilot_sitl/config//models/plane-reverse-servo-pitch-yaw.parm
+[9.581s] -- Up-to-date: /home/sachin/ardu_ws/install/ardupilot_sitl/share/ardupilot_sitl/config//models/plane-reverse-rc-pitch-yaw.parm
+[9.581s] -- Up-to-date: /home/sachin/ardu_ws/install/ardupilot_sitl/share/ardupilot_sitl/config//models/freestyle.parm
+[9.581s] -- Up-to-date: /home/sachin/ardu_ws/install/ardupilot_sitl/share/ardupilot_sitl/config//models/xplane_plane.json
+[9.581s] -- Up-to-date: /home/sachin/ardu_ws/install/ardupilot_sitl/share/ardupilot_sitl/config//models/Callisto.parm
+[9.581s] -- Up-to-date: /home/sachin/ardu_ws/install/ardupilot_sitl/share/ardupilot_sitl/config//models/skywalker_2013.json
+[9.581s] -- Up-to-date: /home/sachin/ardu_ws/install/ardupilot_sitl/share/ardupilot_sitl/config//models/Callisto.json
+[9.581s] -- Up-to-date: /home/sachin/ardu_ws/install/ardupilot_sitl/share/ardupilot_sitl/config//models/freestyle.json
+[9.582s] -- Up-to-date: /home/sachin/ardu_ws/install/ardupilot_sitl/share/ardupilot_sitl/config//models/xplane_heli.json
+[9.582s] -- Up-to-date: /home/sachin/ardu_ws/install/ardupilot_sitl/share/ardupilot_sitl/config//models/heliquad.json
+[9.582s] -- Up-to-date: /home/sachin/ardu_ws/install/ardupilot_sitl/share/ardupilot_sitl/config//models/plane.parm
+[9.582s] -- Up-to-date: /home/sachin/ardu_ws/install/ardupilot_sitl/share/ardupilot_sitl/environment/pythonpath.sh
+[9.582s] -- Up-to-date: /home/sachin/ardu_ws/install/ardupilot_sitl/share/ardupilot_sitl/environment/pythonpath.dsv
+[9.582s] -- Up-to-date: /home/sachin/ardu_ws/install/ardupilot_sitl/lib/python3.12/site-packages/ardupilot_sitl-0.0.0-py3.12.egg-info
+[9.582s] -- Installing: /home/sachin/ardu_ws/install/ardupilot_sitl/lib/python3.12/site-packages/ardupilot_sitl-0.0.0-py3.12.egg-info/PKG-INFO
+[9.582s] -- Installing: /home/sachin/ardu_ws/install/ardupilot_sitl/lib/python3.12/site-packages/ardupilot_sitl-0.0.0-py3.12.egg-info/dependency_links.txt
+[9.582s] -- Installing: /home/sachin/ardu_ws/install/ardupilot_sitl/lib/python3.12/site-packages/ardupilot_sitl-0.0.0-py3.12.egg-info/SOURCES.txt
+[9.582s] -- Installing: /home/sachin/ardu_ws/install/ardupilot_sitl/lib/python3.12/site-packages/ardupilot_sitl-0.0.0-py3.12.egg-info/top_level.txt
+[9.582s] -- Up-to-date: /home/sachin/ardu_ws/install/ardupilot_sitl/lib/python3.12/site-packages/ardupilot_sitl
+[9.583s] -- Up-to-date: /home/sachin/ardu_ws/install/ardupilot_sitl/lib/python3.12/site-packages/ardupilot_sitl/actions.py
+[9.583s] -- Up-to-date: /home/sachin/ardu_ws/install/ardupilot_sitl/lib/python3.12/site-packages/ardupilot_sitl/__init__.py
+[9.583s] -- Up-to-date: /home/sachin/ardu_ws/install/ardupilot_sitl/lib/python3.12/site-packages/ardupilot_sitl/launch.py
+[9.583s] -- Up-to-date: /home/sachin/ardu_ws/install/ardupilot_sitl/lib/python3.12/site-packages/ardupilot_sitl/utilities.py
+[9.635s] Listing '/home/sachin/ardu_ws/install/ardupilot_sitl/lib/python3.12/site-packages/ardupilot_sitl'...
+[9.643s] -- Up-to-date: /home/sachin/ardu_ws/install/ardupilot_sitl/share/ament_index/resource_index/package_run_dependencies/ardupilot_sitl
+[9.643s] -- Up-to-date: /home/sachin/ardu_ws/install/ardupilot_sitl/share/ament_index/resource_index/parent_prefix_path/ardupilot_sitl
+[9.643s] -- Up-to-date: /home/sachin/ardu_ws/install/ardupilot_sitl/share/ardupilot_sitl/environment/ament_prefix_path.sh
+[9.643s] -- Up-to-date: /home/sachin/ardu_ws/install/ardupilot_sitl/share/ardupilot_sitl/environment/ament_prefix_path.dsv
+[9.643s] -- Up-to-date: /home/sachin/ardu_ws/install/ardupilot_sitl/share/ardupilot_sitl/environment/path.sh
+[9.643s] -- Up-to-date: /home/sachin/ardu_ws/install/ardupilot_sitl/share/ardupilot_sitl/environment/path.dsv
+[9.644s] -- Up-to-date: /home/sachin/ardu_ws/install/ardupilot_sitl/share/ardupilot_sitl/local_setup.bash
+[9.644s] -- Up-to-date: /home/sachin/ardu_ws/install/ardupilot_sitl/share/ardupilot_sitl/local_setup.sh
+[9.644s] -- Up-to-date: /home/sachin/ardu_ws/install/ardupilot_sitl/share/ardupilot_sitl/local_setup.zsh
+[9.644s] -- Up-to-date: /home/sachin/ardu_ws/install/ardupilot_sitl/share/ardupilot_sitl/local_setup.dsv
+[9.644s] -- Installing: /home/sachin/ardu_ws/install/ardupilot_sitl/share/ardupilot_sitl/package.dsv
+[9.644s] -- Up-to-date: /home/sachin/ardu_ws/install/ardupilot_sitl/share/ament_index/resource_index/packages/ardupilot_sitl
+[9.644s] -- Up-to-date: /home/sachin/ardu_ws/install/ardupilot_sitl/share/ardupilot_sitl/cmake/ardupilot_sitlConfig.cmake
+[9.644s] -- Up-to-date: /home/sachin/ardu_ws/install/ardupilot_sitl/share/ardupilot_sitl/cmake/ardupilot_sitlConfig-version.cmake
+[9.644s] -- Up-to-date: /home/sachin/ardu_ws/install/ardupilot_sitl/share/ardupilot_sitl/package.xml
+[9.646s] Invoked command in '/home/sachin/ardu_ws/build/ardupilot_sitl' returned '0': AMENT_PREFIX_PATH=/home/sachin/ardu_ws/install/micro_ros_agent:/home/sachin/ardu_ws/install/ardupilot_msgs:${AMENT_PREFIX_PATH} CMAKE_PREFIX_PATH=/home/sachin/ardu_ws/install/micro_ros_agent:/home/sachin/ardu_ws/install/ardupilot_msgs:/opt/ros/jazzy/opt/gz_sim_vendor:/opt/ros/jazzy/opt/gz_sensors_vendor:/opt/ros/jazzy/opt/gz_physics_vendor:/opt/ros/jazzy/opt/sdformat_vendor:/opt/ros/jazzy/opt/gz_gui_vendor:/opt/ros/jazzy/opt/gz_transport_vendor:/opt/ros/jazzy/opt/gz_rendering_vendor:/opt/ros/jazzy/opt/gz_plugin_vendor:/opt/ros/jazzy/opt/gz_fuel_tools_vendor:/opt/ros/jazzy/opt/gz_msgs_vendor:/opt/ros/jazzy/opt/gz_common_vendor:/opt/ros/jazzy/opt/gz_math_vendor:/opt/ros/jazzy/opt/gz_utils_vendor:/opt/ros/jazzy/opt/gz_tools_vendor:/opt/ros/jazzy/opt/gz_ogre_next_vendor:/opt/ros/jazzy/opt/gz_dartsim_vendor:/opt/ros/jazzy/opt/gz_cmake_vendor:/opt/ros/jazzy DEBUGINFOD_URLS=https://debuginfod.ubuntu.com LD_LIBRARY_PATH=/home/sachin/ardu_ws/install/micro_ros_agent/lib:/home/sachin/ardu_ws/install/ardupilot_msgs/lib:${LD_LIBRARY_PATH} PS1=(.ros2_venv) \[\e]0;\u@\h: \w\a\]${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]\$ PYTHONPATH=/home/sachin/ardu_ws/install/ardupilot_msgs/lib/python3.12/site-packages:${PYTHONPATH} VIRTUAL_ENV_PROMPT=(.ros2_venv) /usr/bin/cmake --install /home/sachin/ardu_ws/build/ardupilot_sitl
