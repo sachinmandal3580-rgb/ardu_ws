@@ -85,6 +85,8 @@ def generate_launch_description():
         if lean_setting not in ("auto", "true", "false"):
             raise ValueError("lean must be auto, true, or false")
         lean = fleet_size >= 8 if lean_setting == "auto" else lean_setting == "true"
+        show_gui = str(context.launch_configurations.get("gui", "true")).lower() == "true"
+        world_file = "swarm_runway.sdf" if lean and not show_gui else "runway.sdf"
         robots = [
             {"name": f"drone{i + 1}", "model": Vehicle.IRIS,
              "position": [str(x), str(y), "0.195", "0", "0", "1.5708"]}
@@ -110,7 +112,7 @@ def generate_launch_description():
                 ),
                 launch_arguments={
                     "gz_args": "-v4 -s -r "
-                    f'{Path(pkg_project_gazebo) / "worlds" / ("swarm_runway.sdf" if lean else "runway.sdf")}'
+                    f'{Path(pkg_project_gazebo) / "worlds" / world_file}'
                 }.items(),
             ),
             IncludeLaunchDescription(
