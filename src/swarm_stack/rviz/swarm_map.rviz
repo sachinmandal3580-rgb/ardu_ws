@@ -1,0 +1,62 @@
+Panels:
+  - Class: rviz_common/Displays
+    Name: Displays
+  - Class: rviz_common/Views
+    Name: Views
+Visualization Manager:
+  Class: ""
+  Displays:
+    - Class: rviz_default_plugins/Grid
+      Name: 100 m ground grid
+      Enabled: true
+      Alpha: 0.55
+      Cell Size: 100
+      Plane Cell Count: 10
+      Color: 80; 108; 125
+      Reference Frame: <Fixed Frame>
+      Plane: XY
+      Line Style:
+        Value: Lines
+        Line Width: 0.03
+    - Class: rviz_default_plugins/Axes
+      Name: GCS origin
+      Enabled: true
+      Reference Frame: <Fixed Frame>
+      Length: 15
+      Radius: 0.25
+    - Class: rviz_default_plugins/MarkerArray
+      Name: Arena, aircraft, PoIs, relays
+      Enabled: true
+      Topic:
+        Value: /swarm/map_markers
+        Reliability Policy: Reliable
+        Durability Policy: Volatile
+        History Policy: Keep Last
+        Depth: 10
+  Enabled: true
+  Global Options:
+    Background Color: 17; 27; 41
+    Fixed Frame: map
+    Frame Rate: 20
+  Name: root
+  Tools:
+    - Class: rviz_default_plugins/MoveCamera
+    - Class: rviz_default_plugins/Interact
+      Hide Inactive Objects: true
+    - Class: rviz_default_plugins/Select
+    - Class: rviz_default_plugins/FocusCamera
+    - Class: rviz_default_plugins/Measure
+  Value: true
+  Views:
+    Current:
+      Class: rviz_default_plugins/TopDownOrtho
+      Name: Mission map
+      Target Frame: <Fixed Frame>
+      Scale: 1.3
+      X: 225
+      Y: 0
+      Value: TopDownOrtho (rviz)
+    Saved: ~
+Window Geometry:
+  Height: 900
+  Width: 1360

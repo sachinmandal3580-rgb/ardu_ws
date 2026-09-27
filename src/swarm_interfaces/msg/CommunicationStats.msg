@@ -1,0 +1,3 @@
+uint32 packets_sent
+uint32 packets_delivered
+float32 mean_delivered_latency_ms

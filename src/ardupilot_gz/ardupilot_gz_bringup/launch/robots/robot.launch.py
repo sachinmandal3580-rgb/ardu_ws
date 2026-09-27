@@ -57,43 +57,31 @@ def replace_robot_name(input_file: str, robot_name: str, world_name: str) -> str
 
 
 def launch_spawn_robot(context: LaunchContext) -> List[LaunchDescriptionEntity]:
-    """Return a Gazebo spawn robot launch description"""
-    # Get substitutions for arguments
+    """Spawn through ROS description normally, or directly from SDF in lean mode."""
     namespace = LaunchConfiguration("namespace")
     name = LaunchConfiguration("robot_name")
-    pos_x = LaunchConfiguration("x")
-    pos_y = LaunchConfiguration("y")
-    pos_z = LaunchConfiguration("z")
-    rot_r = LaunchConfiguration("R")
-    rot_p = LaunchConfiguration("P")
-    rot_y = LaunchConfiguration("Y")
-
-    # spawn robot
+    lean = LaunchConfiguration("lean").perform(context).lower() in ("true", "1")
+    if lean:
+        sdf_file = LaunchConfiguration("sdf_file").perform(context)
+        instance = int(LaunchConfiguration("instance").perform(context))
+        with open(sdf_file, encoding="utf-8") as stream:
+            robot_desc = stream.read()
+        robot_desc = robot_desc.replace(
+            "<fdm_port_in>9002</fdm_port_in>",
+            f"<fdm_port_in>{9002 + 10 * instance}</fdm_port_in>")
+        with tempfile.NamedTemporaryFile(mode="w", delete=False, suffix=".sdf") as stream:
+            stream.write(robot_desc)
+            spawn_file = stream.name
+        source_args = ["-file", spawn_file]
+    else:
+        source_args = ["-param", "", "-topic", "robot_description"]
     spawn_robot = Node(
-        package="ros_gz_sim",
-        executable="create",
-        namespace=namespace,
+        package="ros_gz_sim", executable="create", namespace=namespace,
         arguments=[
-            "-world",
-            "",
-            "-param",
-            "",
-            "-name",
-            name,
-            "-topic",
-            "robot_description",
-            "-x",
-            pos_x,
-            "-y",
-            pos_y,
-            "-z",
-            pos_z,
-            "-R",
-            rot_r,
-            "-P",
-            rot_p,
-            "-Y",
-            rot_y,
+            "-world", "", *source_args, "-name", name,
+            "-x", LaunchConfiguration("x"), "-y", LaunchConfiguration("y"),
+            "-z", LaunchConfiguration("z"), "-R", LaunchConfiguration("R"),
+            "-P", LaunchConfiguration("P"), "-Y", LaunchConfiguration("Y"),
         ],
         output="screen",
     )
@@ -109,6 +97,15 @@ def launch_state_pub_with_bridge(
     sdf_file = LaunchConfiguration("sdf_file").perform(context)
     bridge_config_file = LaunchConfiguration("bridge_config_file").perform(context)
     instance = int(LaunchConfiguration("instance").perform(context))
+    lean = LaunchConfiguration("lean").perform(context).lower() in ("true", "1")
+    if lean:
+        bridge_file = replace_robot_name(bridge_config_file, robot_name, world_name)
+        bridge = Node(
+            package="ros_gz_bridge", executable="parameter_bridge",
+            namespace=namespace, parameters=[{"config_file": bridge_file}],
+            output="screen",
+        )
+        return [bridge]
 
     # Compute ports
     port_offset = 10 * instance
@@ -319,6 +316,10 @@ def generate_launch_arguments() -> List[LaunchDescriptionEntity]:
             "sysid",
             default_value="",
             description="Set SYSID_THISMAV.",
+        ),
+        DeclareLaunchArgument(
+            "lean", default_value="False",
+            description="Skip ROS state publisher and TF relay; spawn from SDF.",
         ),
         DeclareLaunchArgument(
             "use_instance_dir",

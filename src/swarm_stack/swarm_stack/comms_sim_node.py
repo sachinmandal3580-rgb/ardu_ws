@@ -1,140 +1,155 @@
 #!/usr/bin/env python3
-"""
-comms_sim_node
---------------
-Simulates a range-limited, lossy communication link between every UAV in the
-swarm and a virtual Ground Control Station (GCS), since neither ArduPilot nor
-Gazebo model RF propagation. Publishes a live connectivity graph on
-/swarm/connectivity_graph at a fixed rate.
+"""Logical lossy multi-hop network for the Gazebo fleet.
 
-IMPORTANT — frame choice:
-Each drone's /ap/pose/filtered and /ap/geopose/filtered are reported relative
-to that drone's OWN EKF origin/home, not a shared world frame, so they are NOT
-directly comparable across drones for distance calculations. There is also a
-known upstream bug where /ap/geopose/filtered does not reflect the actual
-global position set in the Gazebo world (ardupilot_gz#74).
-
-This node instead subscribes to each drone's /<name>/odometry topic, which is
-bridged from Gazebo (ros_gz_bridge) and reports pose in the *shared Gazebo
-world frame* — the correct choice for computing real pairwise distances
-between vehicles spawned at different offsets in the same world.
+ROS/DDS remains the simulator's control bus. Survey images are only accepted at
+/swarm/gcs/survey_image after simulated traversal of this network; this is not
+an RF or physical mesh emulator.
 """
 
-import math
+import random
+import time
 
 import rclpy
 from rclpy.node import Node
 from nav_msgs.msg import Odometry
+from .scenario import Scenario
 
-from swarm_interfaces.msg import ConnectivityGraph, ConnectivityEdge
+from swarm_interfaces.msg import (CommunicationStats, ConnectivityEdge,
+                                  ConnectivityGraph, FaultEvent, SurveyPayload,
+                                  SurveyReceipt)
+from .planning import best_path, distance
 
 
 class CommsSimNode(Node):
     def __init__(self):
         super().__init__("comms_sim_node")
-
-        self.declare_parameter("uav_names", ["drone1", "drone2", "drone3", "drone4", "drone5"])
-        self.declare_parameter("gcs_position", [-5.0, 0.0, 0.0])  # world-frame x, y, z
-        self.declare_parameter("range_full_m", 100.0)   # below this: perfect link
-        self.declare_parameter("range_max_m", 250.0)    # beyond this: link is down
+        self.declare_parameter("scenario_config_path", "")
+        self.scenario = Scenario.load(self.get_parameter("scenario_config_path").value) if self.get_parameter("scenario_config_path").value else None
+        self.declare_parameter("uav_names", [f"drone{i}" for i in range(1, 11)])
+        self.declare_parameter("gcs_position", [-5.0, 0.0, 0.0])
+        self.declare_parameter("range_full_m", 100.0)
+        self.declare_parameter("range_max_m", 140.0)
         self.declare_parameter("base_latency_ms", 20.0)
+        self.declare_parameter("minimum_link_pdr", 0.5)
         self.declare_parameter("publish_rate_hz", 5.0)
-
-        self.uav_names = self.get_parameter("uav_names").value
-        gcs_pos = self.get_parameter("gcs_position").value
-        self.gcs_position = (gcs_pos[0], gcs_pos[1], gcs_pos[2])
-        self.range_full_m = self.get_parameter("range_full_m").value
-        self.range_max_m = self.get_parameter("range_max_m").value
-        self.base_latency_ms = self.get_parameter("base_latency_ms").value
-        rate = self.get_parameter("publish_rate_hz").value
-
-        # latest known world-frame position of each UAV; None until first odom arrives
-        self.positions = {name: None for name in self.uav_names}
-
-        for name in self.uav_names:
-            topic = f"/{name}/odometry"
-            self.create_subscription(
-                Odometry, topic,
-                lambda msg, n=name: self._odom_cb(n, msg),
-                10,
-            )
-            self.get_logger().info(f"Subscribed to {topic}")
-
+        self.declare_parameter("odom_timeout_s", 4.0)
+        self.declare_parameter("random_seed", 7)
+        self.names = list(self.get_parameter("uav_names").value)
+        self.gcs = tuple(float(v) for v in self.get_parameter("gcs_position").value)
+        self.full_range = float(self.get_parameter("range_full_m").value)
+        self.max_range = float(self.get_parameter("range_max_m").value)
+        self.base_latency = float(self.get_parameter("base_latency_ms").value)
+        if self.scenario:
+            self.gcs = tuple(self.scenario.gcs_position)
+            self.full_range = self.scenario.comm_range_m - 1e-6
+            self.max_range = self.scenario.comm_range_m
+        self.minimum_link_pdr = float(self.get_parameter("minimum_link_pdr").value)
+        self.odom_timeout = float(self.get_parameter("odom_timeout_s").value)
+        rate = float(self.get_parameter("publish_rate_hz").value)
+        if not 0 < self.full_range < self.max_range or rate <= 0:
+            raise ValueError("Invalid communication range or publish rate")
+        self.rng = random.Random(int(self.get_parameter("random_seed").value))
+        self.positions = {}
+        self.failed = set()
+        self.degraded_nodes = set()
+        self.degraded_edges = set()
+        self.last_graph = None
+        self.pending = []
+        self.sent = 0
+        self.delivered = 0
+        self.latency_total = 0.0
+        for name in self.names:
+            self.create_subscription(Odometry, f"/{name}/odometry",
+                                     lambda msg, n=name: self._odom(n, msg), 10)
+        self.create_subscription(FaultEvent, "/swarm/fault_events", self._fault, 10)
+        self.create_subscription(SurveyPayload, "/swarm/outbound_survey", self._payload, 10)
         self.graph_pub = self.create_publisher(ConnectivityGraph, "/swarm/connectivity_graph", 10)
-        self.timer = self.create_timer(1.0 / rate, self._tick)
+        self.stats_pub = self.create_publisher(CommunicationStats, "/swarm/communication_stats", 10)
+        self.gcs_pub = self.create_publisher(SurveyPayload, "/swarm/gcs/survey_image", 10)
+        self.receipt_pub = self.create_publisher(SurveyReceipt, "/swarm/survey_receipt", 10)
+        self.create_timer(1.0 / rate, self._tick)
 
-    def _odom_cb(self, name, msg: Odometry):
+    def _odom(self, name, msg):
         p = msg.pose.pose.position
-        self.positions[name] = (p.x, p.y, p.z)
+        self.positions[name] = ((p.x, p.y, p.z), time.monotonic())
 
-    @staticmethod
-    def _dist(a, b):
-        return math.sqrt((a[0]-b[0])**2 + (a[1]-b[1])**2 + (a[2]-b[2])**2)
+    def _fault(self, msg):
+        if msg.event_type == "uav_failure" and msg.target in self.names:
+            self.failed.add(msg.target)
+        elif msg.event_type == "link_degraded":
+            if ":" in msg.target:
+                self.degraded_edges.add(frozenset(msg.target.split(":")))
+            elif msg.target in self.names:
+                self.degraded_nodes.add(msg.target)
+        elif msg.event_type == "link_restored":
+            self.degraded_edges.discard(frozenset(msg.target.split(":")))
+            self.degraded_nodes.discard(msg.target)
 
-    def _link_model(self, distance):
-        """Return (pdr, latency_ms, link_up) for a given distance in metres."""
-        if distance <= self.range_full_m:
-            return 1.0, self.base_latency_ms, True
-        if distance >= self.range_max_m:
-            return 0.0, float("inf"), False
-        span = self.range_max_m - self.range_full_m
-        frac = (distance - self.range_full_m) / span
-        pdr = max(0.0, 1.0 - frac)
-        latency = self.base_latency_ms + frac * (200.0 - self.base_latency_ms)
-        return pdr, latency, True
+    def _link(self, a, b, length):
+        if self.scenario:
+            pdr, latency = (1.0, self.base_latency) if length <= self.max_range else (0.0, -1.0)
+        elif length <= self.full_range:
+            pdr, latency = 1.0, self.base_latency
+        elif length >= self.max_range:
+            pdr, latency = 0.0, -1.0
+        else:
+            fraction = (length - self.full_range) / (self.max_range - self.full_range)
+            pdr = 1.0 - fraction
+            latency = self.base_latency + 180.0 * fraction
+        if a in self.degraded_nodes or b in self.degraded_nodes or frozenset((a, b)) in self.degraded_edges:
+            pdr *= 0.1
+            if pdr < self.minimum_link_pdr:
+                latency = -1.0
+        return pdr, latency
 
     def _tick(self):
-        nodes = {"GCS": self.gcs_position}
-        for name in self.uav_names:
-            if self.positions[name] is not None:
-                nodes[name] = self.positions[name]
-
+        now = time.monotonic()
+        nodes = {"GCS": self.gcs}
+        nodes.update({n: p for n, (p, seen) in self.positions.items()
+                      if n not in self.failed and now - seen < self.odom_timeout})
         edges = []
-        adjacency = {n: [] for n in nodes}
-        for a in nodes:
-            for b in nodes:
-                if a >= b:
-                    continue
-                d = self._dist(nodes[a], nodes[b])
-                pdr, latency, up = self._link_model(d)
-                edges.append(ConnectivityEdge(
-                    node_a=a, node_b=b, distance_m=float(d),
-                    pdr=float(pdr), latency_ms=float(latency if up else -1.0),
-                    link_up=up,
-                ))
-                if up:
-                    adjacency[a].append(b)
-                    adjacency[b].append(a)
+        for i, a in enumerate(nodes):
+            for b in list(nodes)[i + 1:]:
+                length = distance(nodes[a], nodes[b])
+                pdr, latency = self._link(a, b, length)
+                edges.append(ConnectivityEdge(node_a=a, node_b=b,
+                                              distance_m=float(length), pdr=float(pdr),
+                                              latency_ms=float(latency), link_up=pdr >= self.minimum_link_pdr))
+        graph = ConnectivityGraph()
+        graph.uav_names = self.names
+        graph.edges = edges
+        graph.hop_counts = [len(best_path(edges, n)[0]) - 1 if best_path(edges, n)[0] else -1
+                            for n in self.names]
+        self.last_graph = graph
+        self.graph_pub.publish(graph)
+        # Each live aircraft originates one small situational-data heartbeat.
+        for n in self.names:
+            if n in self.failed or n not in nodes:
+                continue
+            self.sent += 1
+            _, pdr, latency = best_path(edges, n)
+            if self.rng.random() < pdr:
+                self.delivered += 1
+                self.latency_total += latency
+        ready, self.pending = [p for p in self.pending if p[0] <= now], [p for p in self.pending if p[0] > now]
+        for _, payload, latency in ready:
+            self.gcs_pub.publish(payload)
+            self.receipt_pub.publish(SurveyReceipt(poi_id=payload.poi_id, uav_name=payload.uav_name,
+                                                   delivered=True, latency_ms=float(latency)))
+        self.stats_pub.publish(CommunicationStats(
+            packets_sent=self.sent, packets_delivered=self.delivered,
+            mean_delivered_latency_ms=float(self.latency_total / self.delivered if self.delivered else 0.0)))
 
-        hop_counts = {name: self._bfs_hops(adjacency, "GCS", name) for name in self.uav_names}
-
-        msg = ConnectivityGraph()
-        msg.uav_names = list(self.uav_names)
-        msg.hop_counts = [hop_counts[n] for n in self.uav_names]
-        msg.edges = edges
-        self.graph_pub.publish(msg)
-
-    @staticmethod
-    def _bfs_hops(adjacency, start, target):
-        if start not in adjacency or target not in adjacency:
-            return -1
-        if start == target:
-            return 0
-        visited = {start}
-        frontier = [start]
-        hops = 0
-        while frontier:
-            hops += 1
-            next_frontier = []
-            for node in frontier:
-                for neighbor in adjacency.get(node, []):
-                    if neighbor == target:
-                        return hops
-                    if neighbor not in visited:
-                        visited.add(neighbor)
-                        next_frontier.append(neighbor)
-            frontier = next_frontier
-        return -1
+    def _payload(self, msg):
+        self.sent += 1
+        _, pdr, latency = best_path(self.last_graph.edges if self.last_graph else [], msg.uav_name)
+        if self.rng.random() < pdr:
+            self.delivered += 1
+            self.latency_total += latency
+            self.pending.append((time.monotonic() + latency / 1000.0, msg, latency))
+        else:
+            self.receipt_pub.publish(SurveyReceipt(poi_id=msg.poi_id, uav_name=msg.uav_name,
+                                                   delivered=False, latency_ms=-1.0))
 
 
 def main(args=None):

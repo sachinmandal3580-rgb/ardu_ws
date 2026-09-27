@@ -1,0 +1,20 @@
+# Defense in depth for the UAV-X simulated fleet. Local manager also enforces these limits.
+FENCE_ENABLE 1
+FENCE_TYPE 3
+FENCE_RADIUS 1400
+FENCE_ALT_MAX 100
+FENCE_ACTION 1
+BATT_FS_LOW_ACT 2
+BATT_FS_CRT_ACT 1
+BATT_LOW_MAH 825
+BATT_CRT_MAH 330
+SIM_BATT_CAP_AH 3.3
+DDS_DOMAIN_ID 30
+DDS_USE_NS 1
+
+# cm/s. Mission controller applies the rectangular arena and access corridor.
+WPNAV_SPEED 500
+WPNAV_SPEED_UP 200
+WPNAV_SPEED_DN 200
+RTL_SPEED 500
+RTL_ALT 7000

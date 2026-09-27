@@ -5,6 +5,7 @@ find_package(ament_cmake REQUIRED)
 find_package(rosidl_default_generators REQUIRED)
 find_package(std_msgs REQUIRED)
 find_package(geometry_msgs REQUIRED)
+find_package(sensor_msgs REQUIRED)
 
 rosidl_generate_interfaces(${PROJECT_NAME}
   "msg/PoI.msg"
@@ -12,7 +13,10 @@ rosidl_generate_interfaces(${PROJECT_NAME}
   "msg/ConnectivityEdge.msg"
   "msg/ConnectivityGraph.msg"
   "msg/FaultEvent.msg"
-  DEPENDENCIES std_msgs geometry_msgs
+  "msg/SurveyPayload.msg"
+  "msg/SurveyReceipt.msg"
+  "msg/CommunicationStats.msg"
+  DEPENDENCIES std_msgs geometry_msgs sensor_msgs
 )
 
 ament_export_dependencies(rosidl_default_runtime)

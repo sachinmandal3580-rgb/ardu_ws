@@ -203,8 +203,10 @@
       <capacity>3.5</capacity>
       <voltage>12.6</voltage>
       <initial_charge>3.5</initial_charge>
-      <power_load>200.0</power_load>
-      <start_draining>false</start_draining>
+      <power_load>90.0</power_load>
+      <start_draining>true</start_draining>
+      <enable_recharge>true</enable_recharge>
+      <charging_time>0.025</charging_time>
     </plugin>
 
     <plugin name="ArduPilotPlugin"

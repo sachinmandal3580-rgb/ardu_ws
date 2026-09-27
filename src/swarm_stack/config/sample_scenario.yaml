@@ -1,0 +1,24 @@
+# Transcribed from the supplied sample slide. SI units throughout.
+mission_duration_s: 2700.0
+uav_endurance_s: 1200.0
+comm_range_m: 100.0
+operational_area: [75.0, -250.0, 575.0, 250.0]
+gcs_position: [0.0, 0.0, 0.0]
+max_altitude_m: 100.0
+max_speed_mps: 5.0
+min_separation_m: 20.0
+report_deadline_s: 10.0
+poi_count: 10
+# Explicit modeling assumptions; the slide does not supply these values.
+random_seed: 7
+spawn_window_s: [0.0, 1800.0]
+reference_fleet_size: 10
+relay_spacing_m: 80.0
+cruise_altitude_m: 40.0
+landing_speed_mps: 2.0
+return_reserve_s: 90.0
+recharge_duration_s: 120.0
+base_area: [-125.0, -75.0, 25.0, 75.0]
+corridor_area: [0.0, -75.0, 75.0, 75.0]
+pad_spacing_m: 25.0
+hop_latency_s: 0.02

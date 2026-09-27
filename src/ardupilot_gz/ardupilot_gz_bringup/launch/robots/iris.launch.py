@@ -65,6 +65,20 @@ def generate_robot_launch_actions(context: LaunchContext, *args, **kwargs):
     with open(sdf_file, "r") as infp:
         robot_desc = infp.read()
 
+    lean = LaunchConfiguration("lean").perform(context).lower() in ("true", "1")
+    if lean:
+        # The swarm only needs survey images and 10 Hz position telemetry.
+        # Keep Gazebo physics and the ArduPilot IMU / lock-step path unchanged.
+        robot_desc = robot_desc.replace(
+            "package://ardupilot_gazebo/models/gimbal_small_3d</uri>",
+            "package://ardupilot_gazebo/models/gimbal_small_3d_swarm</uri>",
+        )
+        robot_desc = robot_desc.replace(
+            "<dimensions>3</dimensions>",
+            "<dimensions>3</dimensions>\n      <odom_publish_frequency>10</odom_publish_frequency>",
+            1,
+        )
+
     # TODO: add model:// => package:// remapping for the iris
     # and iris_with_gimbal models. Then the ardupilot_gazebo ros2 branch
     # should no longer be required.
@@ -86,7 +100,8 @@ def generate_robot_launch_actions(context: LaunchContext, *args, **kwargs):
     with open(sdf_file_modified, "w") as temp_file:
         temp_file.write(robot_desc)
 
-    bridge_config_file = os.path.join(pkg_project_bringup, "config", "iris_bridge.yaml")
+    bridge_name = "iris_bridge_minimal.yaml" if lean else "iris_bridge.yaml"
+    bridge_config_file = os.path.join(pkg_project_bringup, "config", bridge_name)
 
     robot = IncludeLaunchDescription(
         PythonLaunchDescriptionSource(
@@ -123,6 +138,7 @@ def generate_robot_launch_actions(context: LaunchContext, *args, **kwargs):
             "sysid": LaunchConfiguration("sysid"),
             "use_instance_dir": LaunchConfiguration("use_instance_dir"),
             "use_dds_agent": LaunchConfiguration("use_dds_agent"),
+            "lean": LaunchConfiguration("lean"),
         }.items(),
     )
 
@@ -178,6 +194,10 @@ def generate_launch_arguments() -> List[DeclareLaunchArgument]:
                 )
             ),
             description="Set path to default params for the iris with DDS.",
+        ),
+        DeclareLaunchArgument(
+            "lean", default_value="False",
+            description="Spawn from SDF and bridge only swarm telemetry.",
         ),
         DeclareLaunchArgument(
             "synthetic_clock",

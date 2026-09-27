@@ -2,3 +2,7 @@
 string event_type   # "uav_failure" | "link_degraded" | "new_poi"
 string target        # UAV name for uav_failure/link_degraded; PoI id for new_poi
 string description
+float32 x             # world-frame coordinates for new_poi
+float32 y
+float32 z
+int32 priority

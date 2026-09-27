@@ -15,6 +15,7 @@
 
 """Launch multiple vehicles in Gazebo and Rviz."""
 from enum import Enum
+import math
 from pathlib import Path
 
 from ament_index_python.packages import get_package_share_directory
@@ -62,21 +63,33 @@ def get_default_launch_arguments(launch_description_source, context):
     return default_args
 
 
+def launch_pad_positions(count):
+    # Match swarm_stack.scenario.Scenario.pads(): 25 m spacing around
+    # the operational center, with the historical five positions first.
+    pads = [(25.0 * x, 25.0 * y) for x in range(-4, 1) for y in range(-2, 3)]
+    pads.sort(key=lambda point: (math.hypot(*point), point))
+    if not 1 <= count <= len(pads):
+        raise ValueError(f"fleet_size must be between 1 and {len(pads)}")
+    return pads[:count]
+
+
 def generate_launch_description():
     """Generate a launch description for a iris quadcopter."""
     pkg_project_bringup = get_package_share_directory("ardupilot_gz_bringup")
     pkg_project_gazebo = get_package_share_directory("ardupilot_gz_gazebo")
     pkg_ros_gz_sim = get_package_share_directory("ros_gz_sim")
 
-    robots = [
-        {"name": "drone1", "model": Vehicle.IRIS, "position": ["0.0", "0.0", "0.195", "0", "0", "1.5708"]},
-        {"name": "drone2", "model": Vehicle.IRIS, "position": ["3.0", "0.0", "0.195", "0", "0", "1.5708"]},
-        {"name": "drone3", "model": Vehicle.IRIS, "position": ["6.0", "0.0", "0.195", "0", "0", "1.5708"]},
-        {"name": "drone4", "model": Vehicle.IRIS, "position": ["9.0", "0.0", "0.195", "0", "0", "1.5708"]},
-        {"name": "drone5", "model": Vehicle.IRIS, "position": ["12.0", "0.0", "0.195", "0", "0", "1.5708"]},
-    ]
-
     def generate_launch_actions(context: LaunchContext, *args, **kwargs):
+        fleet_size = int(LaunchConfiguration("fleet_size").perform(context))
+        lean_setting = LaunchConfiguration("lean").perform(context).lower()
+        if lean_setting not in ("auto", "true", "false"):
+            raise ValueError("lean must be auto, true, or false")
+        lean = fleet_size >= 8 if lean_setting == "auto" else lean_setting == "true"
+        robots = [
+            {"name": f"drone{i + 1}", "model": Vehicle.IRIS,
+             "position": [str(x), str(y), "0.195", "0", "0", "1.5708"]}
+            for i, (x, y) in enumerate(launch_pad_positions(fleet_size))
+        ]
         launch_actions = [
             DeclareLaunchArgument(
                 "namespace",
@@ -89,7 +102,7 @@ def generate_launch_description():
             DeclareLaunchArgument(
                 "gui",
                 default_value="true",
-                description="Run Gazebo simulation headless.",
+                description="Open the Gazebo graphical client when true.",
             ),
             IncludeLaunchDescription(
                 PythonLaunchDescriptionSource(
@@ -97,7 +110,7 @@ def generate_launch_description():
                 ),
                 launch_arguments={
                     "gz_args": "-v4 -s -r "
-                    f'{Path(pkg_project_gazebo) / "worlds" / "runway.sdf"}'
+                    f'{Path(pkg_project_gazebo) / "worlds" / ("swarm_runway.sdf" if lean else "runway.sdf")}'
                 }.items(),
             ),
             IncludeLaunchDescription(
@@ -147,8 +160,12 @@ def generate_launch_description():
                     "instance": str(instance),
                     "sysid": str(sysid),
                     "use_instance_dir": "True",
+                    "lean": str(lean),
                 }
             )
+
+            drone_launch_arguments["defaults"] += "," + str(
+                Path(pkg_project_bringup) / "config" / "swarm_safety.parm")
 
             # Only launch a single instance of the micro_ros_agent
             if instance > 0:
@@ -178,4 +195,10 @@ def generate_launch_description():
 
         return launch_actions
 
-    return LaunchDescription([OpaqueFunction(function=generate_launch_actions)])
+    return LaunchDescription([
+        DeclareLaunchArgument("fleet_size", default_value="10",
+                              description="Number of Iris SITL vehicles (1–25; 10 for the 500 m mission)."),
+        DeclareLaunchArgument("lean", default_value="auto",
+                              description="Lean telemetry-only ROS bridge; auto enables it for 8+ vehicles."),
+        OpaqueFunction(function=generate_launch_actions),
+    ])

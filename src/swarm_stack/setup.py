@@ -13,6 +13,7 @@ setup(
         ("share/" + package_name, ["package.xml"]),
         (os.path.join("share", package_name, "launch"), glob("launch/*.launch.py")),
         (os.path.join("share", package_name, "config"), glob("config/*.yaml")),
+        (os.path.join("share", package_name, "rviz"), glob("rviz/*.rviz")),
     ],
     install_requires=["setuptools", "pyyaml"],
     zip_safe=True,
@@ -27,6 +28,9 @@ setup(
             "mission_manager_node = swarm_stack.mission_manager_node:main",
             "metrics_logger_node = swarm_stack.metrics_logger_node:main",
             "inject_fault = swarm_stack.inject_fault:main",
+            "visualization_node = swarm_stack.visualization_node:main",
+            "scenario_viewer = swarm_stack.scenario_viewer:main",
+            "reference_sim = swarm_stack.reference_sim:main",
         ],
     },
 )

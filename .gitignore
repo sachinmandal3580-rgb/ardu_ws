@@ -1,0 +1,11 @@
+/build/
+/install/
+/log/
+/logs/
+/[0-9]/
+/mav*.parm
+/mav*.tlog*
+/eeprom.bin
+/swarm_metrics.csv
+__pycache__/
+*.pyc
