@@ -129,6 +129,3 @@ ros2 run swarm_stack inject_fault --event_type new_poi --target emergency_1 --x 
 
 The live stack publishes `/swarm/connectivity_graph`, `/swarm/poi_updates`, `/swarm/gcs/survey_image`, and `/swarm/communication_stats`. The source in `src/swarm_stack/swarm_stack` contains the mission manager, communications model, and metrics logger.
 
-## Model limits
-
-The link graph enforces the 100 m radio cutoff, but ROS 2/DDS and MAVLink still carry simulator control and telemetry outside that modeled mesh. The mission manager is centralized. The Python reference has ideal motion, instant model state, synthetic reports, and simulated charging. Gazebo can launch the ten-aircraft fleet with real SITL dynamics and camera frames. A full 45-minute Gazebo mission has not been validated; read its measured safety and completion results from its own metrics rather than inferring them from the Python run. The Gazebo battery model supports pad recharge after landing; its 120 s minimum recharge wait and charging rate are simulation assumptions. Gazebo has no general obstacle avoidance.
