@@ -7,7 +7,7 @@ This workspace has two views of the sample challenge. The **10-aircraft Gazebo/A
 Install [ROS 2 Jazzy Desktop](https://docs.ros.org/en/jazzy/Installation/Ubuntu-Install-Debs.html) and [Gazebo Harmonic](https://gazebosim.org/docs/harmonic/install_ubuntu/) on Ubuntu 24.04 first. Use the linked official instructions to enable their package repositories. The reference simulation alone needs Python 3, PyYAML, and Tkinter; it does not need ROS or Gazebo.
 
 ```bash
-git clone REPLACE_WITH_GITHUB_REPO_URL ardu_ws
+git clone https://github.com/sachinmandal3580-rgb/ardu_ws.git
 cd ardu_ws
 src/ardupilot/Tools/environment_install/install-prereqs-ubuntu.sh -y
 sudo apt update
